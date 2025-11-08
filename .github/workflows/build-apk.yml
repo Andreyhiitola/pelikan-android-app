@@ -1,4 +1,4 @@
-name: Build Android APK
+name: Build APK
 
 on:
   push:
@@ -10,22 +10,39 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
       
-      - name: Set up JDK 17
+      - name: Setup JDK
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
+          distribution: 'zulu'
           java-version: '17'
       
       - name: Grant execute permission
         run: chmod +x gradlew
       
-      - name: Build APK
-        run: ./gradlew assembleRelease
+      - name: Build Debug APK
+        run: ./gradlew assembleDebug --stacktrace
       
-      - name: Upload APK
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
-          name: pelikan-app
-          path: app/build/outputs/apk/release/*.apk
+          name: pelikan-alakol-debug
+          path: app/build/outputs/apk/debug/app-debug.apk
+      
+      - name: Create Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Pelikan Alakol v1.0.${{ github.run_number }}
+          body: |
+            ## 🐦 Пеликан Алаколь - Debug сборка
+            
+            Скачайте app-debug.apk и установите на Android устройство.
+            
+            **Важно:** Разрешите установку из неизвестных источников.
+          files: app/build/outputs/apk/debug/app-debug.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
