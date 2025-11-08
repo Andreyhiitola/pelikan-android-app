@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="ic_launcher_background">#3b82f6</color>
+    <!-- Цвет фона иконки приложения -->
+    <color name="ic_launcher_background">#10b981</color>
+    
+    <!-- Дополнительные цвета (опционально) -->
+    <color name="primary">#3b82f6</color>
+    <color name="primary_dark">#2563eb</color>
+    <color name="accent">#10b981</color>
 </resources>
