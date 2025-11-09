@@ -50,10 +50,3 @@ jobs:
           files: app/build/outputs/apk/debug/app-debug.apk
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-EOF
-=======
->>>>>>> 1a3f087 (Build debug APK instead of unsigned release)
->>>>>>> 7d0df54 (Resolve merge conflicts)
