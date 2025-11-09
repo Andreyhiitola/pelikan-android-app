@@ -1,12 +1,4 @@
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-cd pelikan-android-app
 
-cat > .github/workflows/build-apk.yml << 'EOF'
-=======
->>>>>>> 1a3f087 (Build debug APK instead of unsigned release)
->>>>>>> 7d0df54 (Resolve merge conflicts)
 name: Build APK
 
 on:
